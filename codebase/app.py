@@ -2,7 +2,11 @@ from flask import Flask, request
 from utils.mysql.connect import connect_to_mysql
 from utils.postgresql.connect import connect_to_postgresql
 
+
+
+
 app = Flask(__name__)
+
 
 
 @app.route('/connect/mysql')
@@ -20,7 +24,7 @@ def postgresql_connector():
 	print ("Connecting to PostGreSQL")
 	response = connect_to_postgresql(request_body)
 	return response
-
+	
 
 if __name__ == '__main__':
 	app.run(debug = True)

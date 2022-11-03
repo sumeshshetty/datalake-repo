@@ -8,6 +8,7 @@ def connect_to_mysql(request_data):
 			user=request_data['user'],
 			password = request_data['password'],
 			db= request_data['db'],
+			connect_timeout = 5
 			)
 		
 		cur = conn.cursor()
