@@ -1,0 +1,10 @@
+{
+  "apps": [
+    {
+      "name": "datalake_api",
+      "script": "app.py",
+      "interpreter":"python",
+      "watch":true
+    }
+  ]
+}
