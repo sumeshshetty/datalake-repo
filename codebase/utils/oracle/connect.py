@@ -10,6 +10,8 @@ def connect_to_oracle(request_data):
 			cx_Oracle.init_oracle_client(lib_dir=libs_dir)
 		except cx_Oracle.ProgrammingError as exception:
 			pass
+		except Exception as exception:
+			pass
 		connection = cx_Oracle.connect(
 		    user=request_data['user'],
 		    password=request_data['password'],
