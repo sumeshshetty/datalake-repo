@@ -10,13 +10,15 @@ def connect_to_oracle(request_data):
 			cx_Oracle.init_oracle_client(lib_dir=libs_dir)
 		except cx_Oracle.ProgrammingError as exception:
 			pass
-		except Exception as exception:
+		except Exception as exception2:
 			pass
+			
 		connection = cx_Oracle.connect(
 		    user=request_data['user'],
 		    password=request_data['password'],
 		    dsn=f"{request_data['host']}/{request_data['sid']}")
-
+		
+	
 		print("Successfully connected to Oracle Database")
 
 		cursor = connection.cursor()
@@ -32,6 +34,7 @@ def connect_to_oracle(request_data):
 			if row:
 				cursor.close()
 				connection.close()
+				print(row)
 				return "Successfully done !!", 200
 			else:
 				cursor.close()
@@ -41,7 +44,3 @@ def connect_to_oracle(request_data):
 		print(f"Failed to establish a new connection: {e}")
 		return str(e), 400
 	
-
-	
-	
-		
