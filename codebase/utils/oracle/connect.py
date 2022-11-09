@@ -6,11 +6,14 @@ def connect_to_oracle(request_data):
 
 	try:
 		try:
+			#for mac connection
 			libs_dir = os.path.join(os.path.dirname(__file__),'libs/instantclient_19_8')
 			cx_Oracle.init_oracle_client(lib_dir=libs_dir)
 		except cx_Oracle.ProgrammingError as exception:
 			pass
 		except Exception as exception2:
+			#for linux need to set
+			#export LD_LIBRARY_PATH=/home/instantclient_21_8
 			pass
 			
 		connection = cx_Oracle.connect(
@@ -22,8 +25,6 @@ def connect_to_oracle(request_data):
 		print("Successfully connected to Oracle Database")
 
 		cursor = connection.cursor()
-
-		# Create a table
 
 		query = f"""select * from {request_data['table_name']} where rownum=1"""
 		try:
